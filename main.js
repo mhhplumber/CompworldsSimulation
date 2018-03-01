@@ -45,6 +45,7 @@ Circle.prototype.update = function () {
 };
 
 function Spawner(game, x, y) {
+  this.sound = new Audio("./pop.wav");
   this.ctr = 0;
   Circle.call(this, game, x, y, 15, 300);
 }
@@ -63,6 +64,7 @@ Spawner.prototype.update = function () {
       var y = this.y + (Math.random()-0.5) * 80;
       gameEngine.addEntity(new Spore(gameEngine, x, y));
     }
+    this.sound.play();
   }
   if(this.life-- <= 0){
     this.removeFromWorld = true;
