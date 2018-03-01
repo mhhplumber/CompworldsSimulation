@@ -46,24 +46,25 @@ Circle.prototype.update = function () {
 
 function Spawner(game, x, y) {
   this.ctr = 0;
-  Circle.call(this, game, x, y, 15, 200);
+  Circle.call(this, game, x, y, 15, 300);
 }
 
 Spawner.prototype = new Circle();
 Spawner.prototype.constructor = Spawner;
 
 Spawner.prototype.update = function () {
+  this.radius = this.life * 0.05;
   if (this.ctr++ === 50){
     this.ctr = -1;
     var nspawn = 5 + Math.ceil(10 * Math.random());
     for (i = 0; i <= nspawn; i++){
       var canvas = document.getElementById("gameWorld");
-      var x = Math.random() * canvas.width;
-      var y = Math.random() * canvas.height;
+      var x = this.x + (Math.random()-0.5) * 80;
+      var y = this.y + (Math.random()-0.5) * 80;
       gameEngine.addEntity(new Spore(gameEngine, x, y));
     }
   }
-  if(!this.life-- || this.lspan > 200){
+  if(this.life-- <= 0){
     this.removeFromWorld = true;
   }
 }
@@ -76,21 +77,23 @@ Spawner.prototype.draw = function (ctx) {
 
 function Spore(game, x, y) {
   this.velocity = {x: (Math.random()-0.5)*240, y: (Math.random()-0.5)*240};
-  Circle.call(this, game, x, y, 5, 25 + Math.ceil(Math.random() * 50));
+  Circle.call(this, game, x, y, 5, 30 + Math.ceil(Math.random() * 50));
 }
 
 Spore.prototype = new Circle();
 Spore.prototype.constructor = Spawner;
 
 Spore.prototype.update = function () {
-  // this.x += (Math.random()-0.5)*this.speed;
-  // this.y += (Math.random()-0.5)*this.speed;
+  this.radius = this.life * 0.125;
   if(!this.life--){
     this.removeFromWorld = true;
-    if (Math.random() < 0.05){
+    if (Math.random() < 0.01){
       var that = this;
       gameEngine.addEntity(new Spawner(gameEngine, that.x, that.y));
     }
+  } else if (this.life > 90){
+    var that = this;
+    gameEngine.addEntity(new Spawner(gameEngine, that.x, that.y));
   }
 
   this.x += this.velocity.x * this.game.clockTick;
@@ -122,6 +125,10 @@ Spore.prototype.update = function () {
             //repell somehow
           }
         } else if (ent !== this && this.collide(ent)) {
+            if(this.life >= ent.life){
+              this.life += ent.life;
+              ent.removeFromWorld = true;
+            }
             var temp = { x: this.velocity.x, y: this.velocity.y };
 
             var dist = distance(this, ent);

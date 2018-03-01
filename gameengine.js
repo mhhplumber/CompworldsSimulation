@@ -170,9 +170,6 @@ function Entity(game, x, y) {
 Entity.prototype.update = function () {
 }
 
-Entity.prototype.reset = function () {
-}
-
 Entity.prototype.draw = function (ctx) {
     if (this.game.showOutlines && this.radius) {
         this.game.ctx.beginPath();
