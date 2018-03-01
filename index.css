@@ -1,0 +1,121 @@
+#dialogue{
+	font-family: 'monospace';
+	font-size: 700%;
+	color: white;
+	border-radius: 5px;
+	width: 100%;
+	height: 20%;
+	margin:0 auto;
+	transition: 2s opacity;
+	text-align: center;
+	z-index: 3;
+	position:fixed;
+	top:5%;
+}
+#menu{
+	font-family: 'monospace';
+	font-size: 200%;
+	background-color: black;
+	color: white;
+	width: 60%;
+	height: 100%;
+	margin: auto;
+	right: 0;
+	left: 0;
+	opacity: .8;
+	text-align: center;
+	z-index: 4;
+	position:fixed;
+}
+.ctrlMenu{
+	font-family: 'monospace';
+	font-size: 90%;
+	background-color: darkgrey;
+	color: black;
+	width: 100%;
+	height: 200px;
+	margin: auto;
+	right: 0;
+	left: 0;
+	text-align: center;
+	line-height: 100%;
+	vertical-align: middle;
+	position:relative;
+}
+#pause{
+    /*background-color: #ddd;*/
+    color:white;
+		width: 50px;
+		height: 50px;
+		font-size: 50px;
+    z-index: 2;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+		cursor: pointer;
+    top:5px;
+    right:5px;
+    position: absolute;
+    border-radius: 5px;
+    font-family: 'monospace';
+}
+#pause:hover{
+	color:darkgrey;
+}
+.astext {
+	font-family: 'monospace';
+    background:none;
+    margin: auto;
+    right: 0;
+    left: 0;
+    border: none;
+		color:white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 90%;
+}
+.astext:hover{
+    color:darkgrey;
+}
+.slider {
+    -webkit-appearance: none;
+    width: 70%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: black;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: black;
+    cursor: pointer;
+}
+.checkbox {
+  cursor: pointer;
+		width: 25px;
+    height: 25px;
+}
+/*.vertical{
+	display: table-row;
+	vertical-align: middle;
+	align-self: center;
+}*/
