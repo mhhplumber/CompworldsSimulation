@@ -108,7 +108,12 @@ GameEngine.prototype.draw = function () {
         this.entities[i].draw(this.ctx);
     }
     this.ctx.restore();
-    this.ctx.imageSmoothingEnabled = false;
+    if (this.entities.length === 0){
+        this.ctx.textAlign="center";
+        this.ctx.fillStyle = "white";
+        this.ctx.font="30px Verdana";
+        this.ctx.fillText("Click anywhere to begin", this.ctx.canvas.width/2, this.ctx.canvas.height/2);
+    }
 }
 
 GameEngine.prototype.update = function () {
