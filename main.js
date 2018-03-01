@@ -46,6 +46,7 @@ Circle.prototype.update = function () {
 
 function Spawner(game, x, y) {
   this.sound = new Audio("./pop.wav");
+  this.sound.volume = 0.005;
   this.ctr = 0;
   Circle.call(this, game, x, y, 15, 300);
 }
