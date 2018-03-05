@@ -100,10 +100,7 @@ GameEngine.prototype.addEntity = function (entity) {
 GameEngine.prototype.draw = function () {
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
     this.ctx.save();
-    this.yscale = window.innerHeight/900;
-    this.xscale = window.innerWidth/1440;
     var that = this;
-    this.ctx.scale(that.yscale, that.yscale);
     for (var i = 0; i < this.entities.length; i++) {
         this.entities[i].draw(this.ctx);
     }
