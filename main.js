@@ -94,7 +94,7 @@ Spore.prototype.update = function () {
       var that = this;
       gameEngine.addEntity(new Spawner(gameEngine, that.x, that.y));
     }
-  } else if (this.life > 90){
+  } else if (this.life > 87){
     var that = this;
     gameEngine.addEntity(new Spawner(gameEngine, that.x, that.y));
   }
