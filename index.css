@@ -45,14 +45,14 @@
 #pause{
     /*background-color: #ddd;*/
     color:white;
-		width: 50px;
-		height: 50px;
-		font-size: 50px;
+	width: 50px;
+	height: 50px;
+	font-size: 50px;
     z-index: 2;
     text-align: center;
     vertical-align: middle;
     line-height: 50px;
-		cursor: pointer;
+	cursor: pointer;
     top:5px;
     right:5px;
     position: absolute;
@@ -63,18 +63,18 @@
 	color:darkgrey;
 }
 .astext {
+    left:5px;
+    position: absolute;
 	font-family: 'monospace';
     background:none;
     margin: auto;
-    right: 0;
-    left: 0;
     border: none;
-		color:white;
+	color:white;
     padding: 15px 32px;
-    text-align: center;
+    text-align: left;
     text-decoration: none;
     display: flex;
-    font-size: 90%;
+    font-size: 130%;
 }
 .astext:hover{
     color:darkgrey;
