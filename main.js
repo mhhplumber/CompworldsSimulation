@@ -8,6 +8,7 @@ socket.on("load", function (data) {
     } else {
       element = Object.setPrototypeOf(element, Spawner.prototype);
       element.sound = new Audio("./pop.wav");
+      element.sound.volume = 0.005;
     }
     element.game = gameEngine;
   });
