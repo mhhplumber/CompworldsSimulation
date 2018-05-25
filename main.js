@@ -1,39 +1,39 @@
-var socket = io.connect("http://24.16.255.56:8888");
+// var socket = io.connect("http://24.16.255.56:8888");
 
-socket.on("load", function (data) {
-  gameEngine.entities = JSON.parse(data.data);
-  gameEngine.entities.forEach(function(element){
-    if (element.velocity){
-      element = Object.setPrototypeOf(element, Spore.prototype);
-    } else {
-      element = Object.setPrototypeOf(element, Spawner.prototype);
-      element.sound = new Audio("./pop.wav");
-      element.sound.volume = 0.005;
-    }
-    element.game = gameEngine;
-  });
-});
+// socket.on("load", function (data) {
+//   gameEngine.entities = JSON.parse(data.data);
+//   gameEngine.entities.forEach(function(element){
+//     if (element.velocity){
+//       element = Object.setPrototypeOf(element, Spore.prototype);
+//     } else {
+//       element = Object.setPrototypeOf(element, Spawner.prototype);
+//       element.sound = new Audio("./pop.wav");
+//       element.sound.volume = 0.005;
+//     }
+//     element.game = gameEngine;
+//   });
+// });
 
-function save(){
-  var cache = [];
-  ents = JSON.stringify(gameEngine.entities, 
-    function(key, value) {
-      if (typeof value === 'object' && value !== null) {
-          if (cache.indexOf(value) !== -1) {
-              return;
-          }
-          cache.push(value);
-      }
-      return value;
-    });
-  console.log(ents);
-  cache = null;
-  socket.emit("save", { studentname: "Michael Humkey", statename: "instance1", data: ents});
-}
+// function save(){
+//   var cache = [];
+//   ents = JSON.stringify(gameEngine.entities, 
+//     function(key, value) {
+//       if (typeof value === 'object' && value !== null) {
+//           if (cache.indexOf(value) !== -1) {
+//               return;
+//           }
+//           cache.push(value);
+//       }
+//       return value;
+//     });
+//   console.log(ents);
+//   cache = null;
+//   socket.emit("save", { studentname: "Michael Humkey", statename: "instance1", data: ents});
+// }
 
-function load(){
-  socket.emit("load", { studentname: "Michael Humkey", statename: "instance1" });
-}
+// function load(){
+//   socket.emit("load", { studentname: "Michael Humkey", statename: "instance1" });
+// }
 
 function fillCircle(ctx, x, y, radius){
   ctx.beginPath();
@@ -228,14 +228,14 @@ window.onload = function () {
     gameEngine.init(ctx);
     gameEngine.start();
 
-    socket.on("connect", function () {
-        console.log("Socket connected.")
-    });
-    socket.on("disconnect", function () {
-        console.log("Socket disconnected.")
-    });
-    socket.on("reconnect", function () {
-        console.log("Socket reconnected.")
-    });
+//     socket.on("connect", function () {
+//         console.log("Socket connected.")
+//     });
+//     socket.on("disconnect", function () {
+//         console.log("Socket disconnected.")
+//     });
+//     socket.on("reconnect", function () {
+//         console.log("Socket reconnected.")
+//     });
 };
 
